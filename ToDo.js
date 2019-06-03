@@ -80,13 +80,13 @@ var createNewTaskElement=function(taskString,doedit){
    listItem.insertBefore(saveButton,listItem.childNodes[2]);
    saveButton.setAttribute("onclick","saveTask(this)");
 
-   editText.addEventListener("keyup", function(event) {
+   editInput.addEventListener("keyup", function(event) {
      // Number 13 is the "Enter" key on the keyboard
      if (event.keyCode === 13) {
        // Cancel the default action, if needed
        //event.preventDefault();
        // Trigger the button element with a click
-       saveButton````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````.click();
+       saveButton.click();
      }
    });
 
