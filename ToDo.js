@@ -63,7 +63,9 @@ var createNewTaskElement=function(taskString,doedit){
  }
 
    function editTask(item){
+
    var listItem=item.parentNode;
+    console.log(listItem.childNodes[1]);
    var editText = listItem.childNodes[1].innerText;
    var editInput=document.createElement("input");
    editInput.type="text";
@@ -77,6 +79,17 @@ var createNewTaskElement=function(taskString,doedit){
    listItem.removeChild(listItem.childNodes[2]);
    listItem.insertBefore(saveButton,listItem.childNodes[2]);
    saveButton.setAttribute("onclick","saveTask(this)");
+
+   editText.addEventListener("keyup", function(event) {
+     // Number 13 is the "Enter" key on the keyboard
+     if (event.keyCode === 13) {
+       // Cancel the default action, if needed
+       //event.preventDefault();
+       // Trigger the button element with a click
+       saveButton````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````.click();
+     }
+   });
+
   }
 
 function saveTask(item)
@@ -98,14 +111,18 @@ function saveTask(item)
 
 }
 
+
+
+
 function deleteTask(item){
 		console.log("Delete Task...");
-
+var result = confirm("Are you sure to delete this item?");
+if(result){
 		var listItem=item.parentNode;
 		var ul=listItem.parentNode;
 		//Remove the parent list item from the ul.
 		ul.removeChild(listItem);
-
+}
 }
 
 function checkit (item,isChecked){
