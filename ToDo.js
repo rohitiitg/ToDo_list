@@ -1,8 +1,10 @@
 var input = document.getElementById("new_item");
 var list = document.getElementById("item1");
 
+
 input.addEventListener("keypress", function(event) {
   // Number 13 is the "Enter" key on the keyboard
+
   if(event.keyCode == 32 && input.value == "") event.preventDefault();
   if (event.keyCode === 13) {
     // Cancel the default action, if needed
@@ -11,8 +13,6 @@ input.addEventListener("keypress", function(event) {
     document.getElementById("btn").click();
   }
 });
-
-
 
 var createNewTaskElement = function(taskString, doedit) {
 

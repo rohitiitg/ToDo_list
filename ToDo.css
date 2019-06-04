@@ -68,6 +68,21 @@ li {
   zoom: 1.5;
 }
 
+.edit:hover{
+  background-color:#4be3ac;
+}
+
+.save:hover{
+  background-color:#4be3ac;
+}
+
+.delete:hover{
+  background-color:#4be3ac;
+}
+#btn:hover{
+  background-color:#4be3ac;
+}
+
 #item1 {
   width: 80%;
   position: relative;
