@@ -1,8 +1,9 @@
 var input = document.getElementById("new_item");
 var list = document.getElementById("item1");
 
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keypress", function(event) {
   // Number 13 is the "Enter" key on the keyboard
+  if(event.keyCode == 32 && input.value == "") event.preventDefault();
   if (event.keyCode === 13) {
     // Cancel the default action, if needed
     //event.preventDefault();
@@ -78,8 +79,9 @@ function editTask(item) {
   listItem.insertBefore(saveButton, listItem.childNodes[2]);
   saveButton.setAttribute("onclick", "saveTask(this)");
 
-  editInput.addEventListener("keyup", function(event) {
+  editInput.addEventListener("keypress", function(event) {
     // Number 13 is the "Enter" key on the keyboard
+    if(event.keyCode == 32  && editInput.value == "") event.preventDefault();
     if (event.keyCode === 13) {
       // Cancel the default action, if needed
       //event.preventDefault();
@@ -91,20 +93,25 @@ function editTask(item) {
 }
 
 function saveTask(item) {
-  var listItem = item.parentNode;
-  var saveText = listItem.childNodes[1].value;
-  var saveInput = document.createElement("label");
-  saveInput.innerText = saveText;
-  listItem.removeChild(listItem.childNodes[1]);
-  listItem.insertBefore(saveInput, listItem.childNodes[1]);
 
-  var editButton = document.createElement("button");
-  editButton.innerText = "Edit";
-  editButton.className = "edit";
-  editButton.setAttribute("onclick", "editTask(this)");
-  listItem.removeChild(listItem.childNodes[2]);
-  listItem.insertBefore(editButton, listItem.childNodes[2]);
-  console.log(listItem.childNodes[1].value);
+  if(item.parentNode.childNodes[1].value =="") alert("Write something");
+  else
+  {
+    var listItem = item.parentNode;
+    var saveText = listItem.childNodes[1].value;
+    var saveInput = document.createElement("label");
+    saveInput.innerText = saveText;
+    listItem.removeChild(listItem.childNodes[1]);
+    listItem.insertBefore(saveInput, listItem.childNodes[1]);
+
+    var editButton = document.createElement("button");
+    editButton.innerText = "Edit";
+    editButton.className = "edit";
+    editButton.setAttribute("onclick", "editTask(this)");
+    listItem.removeChild(listItem.childNodes[2]);
+    listItem.insertBefore(editButton, listItem.childNodes[2]);
+    console.log(listItem.childNodes[1].value);
+  }
 
 }
 
